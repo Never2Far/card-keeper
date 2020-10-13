@@ -1,3 +1,6 @@
 class Player < ActiveRecord::Base
-
-end
+has_many :cards
+has_many :collections, through: :cards
+has_many :cards
+has_many :contracts
+has_many :teams, through: :contracts
