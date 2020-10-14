@@ -10,15 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 8) do
+ActiveRecord::Schema.define(version: 14) do
 
   create_table "cards", force: :cascade do |t|
     t.integer "collection_id"
-    t.string "position"
     t.integer "player_id"
     t.string "condition"
     t.float "estimated_value"
     t.string "special_attribute"
+    t.integer "contract_id"
+    t.integer "user_id"
+    t.integer "sport_id"
+    t.integer "position_id"
+    t.integer "team_id"
   end
 
   create_table "collections", force: :cascade do |t|
@@ -29,14 +33,19 @@ ActiveRecord::Schema.define(version: 8) do
 
   create_table "contracts", force: :cascade do |t|
     t.integer "team_id"
-    t.string "position"
     t.integer "player_id"
+    t.integer "position_id"
   end
 
   create_table "players", force: :cascade do |t|
     t.string "name"
     t.string "nickname"
     t.string "number"
+  end
+
+  create_table "positions", force: :cascade do |t|
+    t.string "name"
+    t.integer "sport_id"
   end
 
   create_table "sports", force: :cascade do |t|
