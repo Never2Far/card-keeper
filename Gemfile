@@ -12,6 +12,12 @@ gem 'pry'
 gem 'bcrypt'
 gem "tux"
 gem 'rack-flash3'
+# gem 'rails-erd', '~> 2.22'
+gem 'ruby-graphviz'
+
+group :development do
+  gem "rails-erd"
+end
 
 group :test do
   gem 'rspec'
