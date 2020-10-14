@@ -14,6 +14,7 @@ gem "tux"
 gem 'rack-flash3'
 # gem 'rails-erd', '~> 2.22'
 gem 'ruby-graphviz'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 group :development do
   gem "rails-erd"
@@ -24,4 +25,5 @@ group :test do
   gem 'capybara'
   gem 'rack-test'
   gem 'database_cleaner'
+  
 end
