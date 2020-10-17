@@ -1,4 +1,5 @@
 class Sport < ActiveRecord::Base
+    include Slugifiable
     has_many :collections
     has_many :users, through: :collections
     has_many :teams

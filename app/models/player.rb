@@ -1,4 +1,5 @@
 class Player < ActiveRecord::Base
+    include Slugifiable
     has_many :contracts
     has_many :cards, through: :contracts
     has_many :collections, through: :cards
