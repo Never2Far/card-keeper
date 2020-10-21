@@ -1,0 +1,16 @@
+<h1>Card</h1>
+
+<h2>Owner: <a href="/collections/<%= @card.collection.slug %>"><%= @card.user.username %></a> (Collection: <a href="/collections/<%= @card.collection.slug %>" ><%= @card.collection.name %></a>)</h2>
+
+
+<h2>Player: <a href="/players/<%= @card.player.slug %>"><%= @card.player.name %></a></h2>
+
+<h2>Team: <a href="/teams/<%= @card.team.slug %>"><%= @card.team.name %></a></h2>
+
+<h2>Position: <%= @card.position.name %></h2>
+
+<h2>Condition: <%= @card.condition %></h2>
+
+<h2>Estimated Value: $<%= @card.estimated_value %></h2>
+
+<h2>Special Attributes: <%= @card.special_attribute %></h2>
