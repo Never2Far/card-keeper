@@ -1,0 +1,13 @@
+<h1><%= @collection.name %></h1>
+
+<h3>Cards</h3>
+
+<ul>
+
+<% @collection.cards.each do |card| %>
+<li><a href="/cards/<%= card.id %>"><%= card.player.name %></a></li>
+<% end %>
+
+</ul>
+
+<a href="/users/<%= @collection.user.slug %>"><h3>See <%= @collection.user.username %>'s other collections</h3></a>
