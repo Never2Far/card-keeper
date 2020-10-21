@@ -4,6 +4,15 @@
     <title>Card Keeper</title>
   </head>
   <body>
+    <header>
+
+    </header>
       <%= yield %>
+      <footer>
+        <% if self.logged_in? %>
+          <a href="/dashboard">My Dashboard</a>
+          <a href="/logout">Sign Out</a>
+        <% end %>
+      </footer>
   </body>
 </html>
