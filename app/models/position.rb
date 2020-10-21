@@ -1,5 +1,6 @@
 class Position < ActiveRecord::Base
-    include Slugifiable
+    include Slugifiable::InstanceMethods
+    extend Slugifiable::ClassMethods
     belongs_to :sport
     has_many :contracts
     has_many :players, through: :contracts

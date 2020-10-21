@@ -1,5 +1,6 @@
 class Sport < ActiveRecord::Base
-    include Slugifiable
+    include Slugifiable::InstanceMethods
+    extend Slugifiable::ClassMethods
     has_many :collections
     has_many :users, through: :collections
     has_many :teams
