@@ -1,6 +1,8 @@
 require './config/environment'
 
 class ApplicationController < Sinatra::Base
+  include Slugifiable::InstanceMethods
+  extend Slugifiable::ClassMethods
 
   configure do
     enable :sessions
@@ -21,7 +23,7 @@ class ApplicationController < Sinatra::Base
   
     get '/' do
       if self.logged_in?
-        redirect '/collections'
+        redirect '/dashboard'
       end
   
       erb :index
@@ -30,7 +32,7 @@ class ApplicationController < Sinatra::Base
   
   get '/signup' do
     if self.logged_in?
-      redirect '/collections'
+      redirect '/dashboard'
     end
   
     erb :'users/signup'
@@ -50,10 +52,15 @@ class ApplicationController < Sinatra::Base
     
     if user.save
       session[:user_id] = user.id
-      redirect '/collections'
+      redirect '/dashboard'
     else
       redirect '/signup'
     end
+  end
+
+  get '/dashboard' do
+    @user = self.current_user
+    erb :dashboard
   end
 
 end
