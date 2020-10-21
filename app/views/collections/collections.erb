@@ -1,0 +1,15 @@
+<h1>Card Collections</h1>
+
+
+<% Sport.all.each do |sport| %>
+
+<h3><%= sport.name %> Card Collections</h3>
+
+<ul>
+
+<% sport.collections.each do |collection| %>
+<li><a href="/collections/<%= collection.slug %>"><%= collection.name %></a></li>
+<% end %>
+
+</ul>
+<% end %>
