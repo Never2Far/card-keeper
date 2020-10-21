@@ -7,5 +7,11 @@ end
 use Rack::MethodOverride
 # use Rack::Flash
 
+
+
 use UsersController
+use TeamsController
+use PlayersController
+use CollectionsController
+use CardsController
 run ApplicationController
