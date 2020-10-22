@@ -1,0 +1,11 @@
+<h1><%= @team.name %></h1>
+
+<h3>Players (current & historic):</h3>
+
+<ul>
+
+    <% @team.players.each do |player| %>
+    <li><a href="/players/<%= player.slug %>"><%= player.name %></a></li>
+    <% end %>
+    
+    </ul>
