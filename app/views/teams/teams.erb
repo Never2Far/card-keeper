@@ -1,0 +1,15 @@
+<h1>Teams</h1>
+
+
+<% Sport.all.each do |sport| %>
+
+<h3><%= sport.name %></h3>
+
+<ul>
+
+<% sport.teams.each do |team| %>
+<li><a href="/teams/<%= team.slug %>"><%= team.name %></a></li>
+<% end %>
+
+</ul>
+<% end %>
