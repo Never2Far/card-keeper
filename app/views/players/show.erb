@@ -1,0 +1,18 @@
+<h1><%= @player.name %></h1>
+
+<h3>Teams</h3>
+<ul>
+    <% @player.teams.each do |team| %>
+    <li><a href="/teams/<%= team.slug %>"><%= team.name %></a></li>
+    <% end %>
+
+</ul>
+
+<h3>Cards</h3>
+<ul>
+<% @player.cards.each do |card| %>
+    <li><a href="/cards/<%= card.id %>"><%= card.team.name %>, <%= card.position.name %>, <%= card.special_attribute %> -- <%= card.condition %></a></li>
+<% end %>
+</ul>
+
+
