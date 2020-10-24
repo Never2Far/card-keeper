@@ -1,6 +1,11 @@
 <h1>Welcome, <%= @user.name %></h1>
 
 <h3>My Collections</h3>
+<% @user.collections.each do |collection| %>
+<ul>
+<li><a href="/collections/<%= collection.slug %>"><%= collection.name %></a></li>
+</ul>
+<% end %>
 
 <h3>My Cards</h3>
 
