@@ -1,0 +1,33 @@
+<h1>Add a New Card</h1>
+
+<h2>Part 1 of 2</h2>
+<form id="addCardForm1" action="/cards" method="POST">
+    <h3>Collection:</h3>
+    <% @user.collections.each do |collection| %>
+    <p><input type="radio" name="collection" id="<%= collection.id %>" value="<%= collection.id%>"><%= collection.name %></input></p>
+    <% end %>
+
+    <h3>Player:</h3>
+    <% Player.all.each do |player| %>
+    <p><input type="radio" name="player" id="<%= player.id %>" value="<%= player.id%>"><%= player.name %></input></p>
+    <% end %>
+
+    <h3>Condition:</h3>
+    <p><input type="radio" name="condition" id="condition" value="mint">Mint</input></p>
+    <p><input type="radio" name="condition" id="condition" value="excellant">Excellant</input></p>
+    <p><input type="radio" name="condition" id="condition" value="good">Good</input></p>
+    <p><input type="radio" name="condition" id="condition" value="fair">Fair</input></p>
+    <p><input type="radio" name="condition" id="condition" value="poor">Poor</input></p>
+
+    <h3>Special Card Attributes:</h3>
+    <p>List any special card attributes separated by commas (rookie, signed, first edition, etc.):</p>
+    <input type="text" name="special_attribute" id="special_attribute">
+
+    <h3>Estimated Value:</h3>
+    <label for="estimated_value">&#36;</label>
+    <input type="number" step="0.01" min="0.00" name="estimated_value" id="estimated_value"><br><br>
+
+
+<input type="submit" value="Next">
+
+</form>
