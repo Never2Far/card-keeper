@@ -5,9 +5,15 @@
 <ul>
 
 <% @collection.cards.each do |card| %>
-<li><a href="/cards/<%= card.id %>"><%= card.player.name %></a></li>
+<li><a href="/cards/<%= card.id %>"><%= card.player.name %>, <%= card.team.name %>, <%= card.position.name %>, <%= card.special_attribute %> -- <%= card.condition %></a></li>
 <% end %>
 
 </ul>
 
-<a href="/users/<%= @collection.user.slug %>"><h3>See <%= @collection.user.username %>'s other collections</h3></a>
+<% if self.logged_in? && (@collection.user == self.current_user) %>
+    <a href="/cards/new">Add a card</a><br>
+    <a href="/collections/<%= @collection.slug %>/edit">Edit this collection</a>
+<% else %>
+    <a href="/users/<%= @collection.user.slug %>"><h3>See <%= @collection.user.username %>'s other collections</h3></a>
+<% end %>
+
