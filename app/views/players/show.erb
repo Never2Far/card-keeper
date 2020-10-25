@@ -2,7 +2,7 @@
 
 <h3>Teams</h3>
 <ul>
-    <% @player.teams.each do |team| %>
+    <% @player.teams.uniq.each do |team| %>
     <li><a href="/teams/<%= team.slug %>"><%= team.name %></a></li>
     <% end %>
 
