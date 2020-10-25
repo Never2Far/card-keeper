@@ -1,0 +1,5 @@
+<h1>Cards</h1>
+
+<% Card.all.each do |card| %>
+<li><a href="/cards/<%= card.id %>"><%= card.player.name %>, <%= card.team.name %>, <%= card.position.name %>, <%= card.special_attribute %> -- <%= card.condition %></a></li>
+<% end %>
