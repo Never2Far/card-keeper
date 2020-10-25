@@ -1,0 +1,21 @@
+<h1>Add a New Card</h1>
+
+<h2>Part 2 of 2</h2>
+<form id="addCardForm2" action="/cards/new" method="POST">
+
+    <h3>Team:</h3>
+    <% @card.sport.teams.each do |team| %>
+    <p><input type="radio" name="team" id="<%= team.id %>" value="<%= team.id%>"><%= team.name %></input></p>
+    <% end %>
+
+    <h3>Position:</h3>
+    <% @card.sport.positions.each do |position| %>
+    <p><input type="radio" name="position" id="<%= position.id %>" value="<%= position.id%>"><%= position.name %></input></p>
+    <% end %>
+
+    <input type="hidden" name="card" value="<%= @card.id %>">
+
+
+<input type="submit" value="Create Card">
+
+</form>
