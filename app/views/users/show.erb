@@ -4,7 +4,7 @@
 <ul>
 
 <% @user.collections.each do |collection| %>
-<li><a href="/collections/<%= collection.slug %>"><%= collection.name %></a></li>
+<li><a href="/collections/<%= collection.id %>"><%= collection.name %></a></li>
 <% end %>
 
 </ul>
