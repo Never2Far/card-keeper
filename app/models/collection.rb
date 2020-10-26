@@ -9,12 +9,22 @@ class Collection < ActiveRecord::Base
     has_many :teams, through: :cards
     has_many :positions, through: :cards
 
-    def self.find_by_slug(slug)
-        name = slug.gsub("-", " ")
-        self.all.each do |obj|
-            if obj.name.downcase.strip.gsub(/[^a-zA-Z0-9. ]/, "") == name
-                return obj
-            end
+    def getValue
+        total = 0.00
+        self.cards.each do |card|
+            total += card.estimated_value
         end
+        total
     end
+
+
+
+    # def self.find_by_slug(slug)
+    #     name = slug.gsub("-", " ")
+    #     self.all.each do |obj|
+    #         if obj.name.downcase.strip.gsub(/[^a-zA-Z0-9. ]/, "") == name
+    #             return obj
+    #         end
+    #     end
+    # end
 end
