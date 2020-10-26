@@ -10,9 +10,22 @@
 
 </ul>
 
+<h4>Total Value of this Collection: &#36;<%= @value.round(2) %></h4>
+
 <% if self.logged_in? && (@collection.user == self.current_user) %>
-    <a href="/cards/new">Add a card</a><br>
-    <a href="/collections/<%= @collection.slug %>/edit">Edit this collection</a>
+    <form action="/cards/new" method="get">
+       
+        <input type="submit" value="Add a card">
+        </form>
+    
+    <form action="/collections/<%= @collection.id %>/edit" method="get">
+       
+        <input type="submit" value="Edit This Collection">
+        </form>
+    <form action="/collections/<%= @collection.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete This Collection">
+    </form>
 <% else %>
     <a href="/users/<%= @collection.user.slug %>"><h3>See <%= @collection.user.username %>'s other collections</h3></a>
 <% end %>
