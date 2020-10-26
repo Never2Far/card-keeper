@@ -25,7 +25,7 @@ post '/cards' do
         estimated_value: params[:estimated_value]
     )
 
-    
+    # @card.collection.estimated_value += @card.estimated_value
     
     erb :'cards/new2'
 end
@@ -73,20 +73,22 @@ end
 patch '/cards/:id' do
     @card = Card.find(params[:id])
 
-    if (params[:content] == "") || (params[:content] == nil)
-        redirect "/cards/#{@card.id}/edit"
-    end
+    # if (params[:content] == "") || (params[:content] == nil)
+    #     redirect "/cards/#{@card.id}/edit"
+    # end
     
-    @card.update(content: params[:content])
+    # @card.update(content: params[:content])
     redirect "/cards/#{@card.id}"
 end
 
 delete '/cards/:id' do
     @card = Card.find(params[:id])
+    @collection = @card.collection
     if self.logged_in? && (self.current_user.id == @card.user_id)
+        # @collection.estimated_value -= @card.estimated_value
         @card.destroy
     end
-        redirect '/cards'
+        redirect "/collections/#{@collection.id}"
 end
 
 
