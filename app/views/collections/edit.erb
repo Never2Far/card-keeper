@@ -1,0 +1,24 @@
+<h1>Edit Collection</h1>
+
+<form action="/collections/<%= @collection.id %>" method="post">
+    <input type="hidden" name="_method" id="hidden" value="patch">
+
+<label for="name">Collection Name: </label>
+<input type="text" name="name" id="name" value="<%= @collection.name %>"><br><br>
+
+
+<label for="sport">Collection Sport: </label>
+    <% Sport.all.each do |sport| %>
+    <p><input type="radio" name="sport" id="<%= sport.id %>" value="<%= sport.id%>"<%='checked' if (@collection.sport_id == sport.id) %>><%= sport.name %></input></p>
+    <% end %>
+
+    <h3>Cards (**any checked cards will be removed from collection upon form submission**):</h3>
+    
+    <% @collection.cards.each do |card| %>
+        <p><input type="checkbox" name="cards[]" id="cards[]" value="<%= card.id %>"><%= card.player.name %>, <%= card.team.name %>, <%= card.position.name %>, <%= card.special_attribute %> -- <%= card.condition %></input></p>
+    <% end %>
+    
+
+<input type="submit" value="Edit Collection">
+
+</form>
