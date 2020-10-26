@@ -3,9 +3,14 @@
 <h3>My Collections</h3>
 <% @user.collections.each do |collection| %>
 <ul>
-<li><a href="/collections/<%= collection.slug %>"><%= collection.name %></a></li>
+<li><a href="/collections/<%= collection.id %>"><%= collection.name %></a>(Value: &#36;<%= collection.getValue %></li>
 </ul>
 <% end %>
+<form action="/collections/new" method="get">
+       
+    <input type="submit" value="Create a new collection">
+    </form>
+
 
 <h3>My Cards</h3>
 
