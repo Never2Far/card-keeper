@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 14) do
+ActiveRecord::Schema.define(version: 15) do
 
   create_table "cards", force: :cascade do |t|
     t.integer "collection_id"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 14) do
     t.string "name"
     t.integer "user_id"
     t.integer "sport_id"
+    t.float "estimated_value"
   end
 
   create_table "contracts", force: :cascade do |t|
