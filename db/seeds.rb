@@ -1,7 +1,14 @@
 require 'faker'
 
+User.create(
+    name: "Seth",
+    username: "sethman18",
+    email: "seth.j.near@gmail.com",
+    password: "Q73DB*Aa"
+)
 
-100.times do
+
+50.times do
     User.create(
         name: Faker::Name.unique.name, 
         username: Faker::Internet.unique.username,
@@ -12,7 +19,7 @@ end
 
 Faker::Name.unique.clear
 
-500.times do
+100.times do
     Player.create(name: Faker::Name.unique.name)
 end
 
@@ -25,7 +32,7 @@ Sport.create(name: "Soccer")
 
 
 
-20.times do
+10.times do
     Team.create(name: Faker::Sports::Basketball.unique.team, sport_id: 1)
     Team.create(name: Faker::Sports::Football.unique.team, sport_id: 2)
 end
@@ -41,16 +48,16 @@ User.all.each do |user|
     Collection.create(name: "#{user.username}\'s Soccer Card Collection", user_id: user.id, sport_id: 2)
 end
 
-1000.times do
-    Contract.create(player_id: Faker::Number.within(range: 1..500),
-                    team_id: Faker::Number.within(range: 1..40),
+200.times do
+    Contract.create(player_id: Faker::Number.within(range: 1..100),
+                    team_id: Faker::Number.within(range: 1..20),
                     position_id: Faker::Number.within(range: 1..10),
                 )
 end
 
 Collection.all.each do |collection|
     50.times do
-        contract = Contract.find(Faker::Number.within(range: 1..1000))
+        contract = Contract.find(Faker::Number.within(range: 1..200))
 
         Card.create(
         collection_id: collection.id, 
@@ -65,7 +72,7 @@ Collection.all.each do |collection|
         team_id: contract.team_id)
         
 
-        contract = Contract.find(Faker::Number.within(range: 1..1000))
+        contract = Contract.find(Faker::Number.within(range: 1..200))
 
         Card.create(
         collection_id: collection.id, 
