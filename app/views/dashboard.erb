@@ -3,7 +3,7 @@
 <h3>My Collections</h3>
 <% @user.collections.each do |collection| %>
 <ul>
-<li><a href="/collections/<%= collection.id %>"><%= collection.name %></a>(Value: &#36;<%= collection.getValue %></li>
+<li><a href="/collections/<%= collection.id %>"><%= collection.name %></a>(Value: &#36;<%= collection.getValue.round(2) %>)</li>
 </ul>
 <% end %>
 <form action="/collections/new" method="get">
