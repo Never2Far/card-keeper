@@ -2,17 +2,34 @@
 <html>
   <head>
     <title>Card Keeper</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" type="text/css" />
   </head>
   <body>
-    <header>
-
-    </header>
-      <%= yield %>
-      <footer>
+    <div id="page-container">
+      <div id="sub-page-container">
+      <header id="header">
+        <div id="banner">
+        <img src="/images/logo.png" class="logo" alt="Sports Logo">
+        <span id="bannerText">Card Keeper</span>
+        <img src="/images/logo.png" class="logo" alt="Sports Logo">
+        </div>
+        <div id="navLinks">
         <% if self.logged_in? %>
-          <a href="/dashboard">My Dashboard</a>
-          <a href="/logout">Sign Out</a>
-        <% end %>
-      </footer>
+        <a href="/dashboard">My Dashboard</a>
+        <a href="/logout">Sign Out</a>
+      <% end %>
+    </div>
+      </header>
+     <div id="content-wrap">
+      <% if flash[:message] %>
+      <%= flash[:message] %>
+      <% end %>
+      <%= yield %>
+    </div>
+    <footer id="footer">
+      &#169;2020 Seth Near
+    </footer>
+    </div>
+  </div>
   </body>
 </html>
