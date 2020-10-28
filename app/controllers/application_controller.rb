@@ -1,4 +1,5 @@
 require './config/environment'
+require 'sinatra/flash'
 
 class ApplicationController < Sinatra::Base
   include Slugifiable::InstanceMethods
@@ -9,7 +10,10 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "secret"
     set :public_folder, 'public'
     set :views, 'app/views'
+    register Sinatra::Flash
   end
+
+  
 
   helpers do
     def logged_in?
@@ -30,6 +34,11 @@ class ApplicationController < Sinatra::Base
       
     end
   
+get '/search' do
+  erb :search
+end
+
+
   get '/signup' do
     if self.logged_in?
       redirect '/dashboard'
@@ -40,7 +49,15 @@ class ApplicationController < Sinatra::Base
   
   post '/signup' do
     if params.any? {|k,v| v == ""}
+      flash[:message] = "All fields are required!"
       redirect '/signup'
+    end
+
+    User.all.each do |user|
+      if user.username == params[:username]
+        flash[:message] = "**That username is already taken, please try a different one**"
+        redirect '/signup'
+      end
     end
   
     user = User.new(

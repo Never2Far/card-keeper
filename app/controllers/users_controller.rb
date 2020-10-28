@@ -15,7 +15,8 @@ class UsersController < ApplicationController
         session[:user_id] = user.id
         redirect '/dashboard'
         else
-        redirect '/index'
+            flash[:message] = "The username/password you entered is incorrect."
+        redirect '/'
         end
     end
 
