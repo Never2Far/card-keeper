@@ -8,6 +8,14 @@
 
 </ul>
 
+<h3>Positions</h3>
+<ul>
+    <% @player.positions.uniq.each do |position| %>
+    <li><%= position.name %></li>
+    <% end %>
+
+</ul>
+
 <h3>Cards</h3>
 <ul>
 <% @player.cards.each do |card| %>
