@@ -7,8 +7,8 @@ class PlayersController < ApplicationController
     end
 
 
-    get '/players/:id' do
-        @player = Player.find(params[:id])
+    get '/players/:slug' do
+        @player = Player.find_by_slug(params[:slug])
         erb :'/players/show'
     end
 
