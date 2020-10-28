@@ -11,8 +11,7 @@ gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
 gem "tux"
-gem 'rack-flash3'
-# gem 'rails-erd', '~> 2.22'
+gem 'sinatra-flash'
 gem 'ruby-graphviz'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
