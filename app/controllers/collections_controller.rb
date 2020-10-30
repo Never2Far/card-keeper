@@ -4,7 +4,7 @@ class CollectionsController < ApplicationController
 
     get '/collections' do
        if !self.logged_in?
-        redirect '/index'
+        redirect '/'
        end
 
         erb :'collections/collections'
