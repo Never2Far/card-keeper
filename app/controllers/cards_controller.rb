@@ -60,18 +60,36 @@ end
 get '/cards/:id/edit' do
     
     if !self.logged_in?
-        redirect '/index'
+        redirect '/'
     end
     @card = Card.find(params[:id])
+    @user = @card.user
     if self.current_user.id != @card.user_id
         redirect "/cards/#{@card.id}"
     end
-        erb :'cards/edit_card'
+        erb :'cards/edit'
     
 end
 
 patch '/cards/:id' do
     @card = Card.find(params[:id])
+
+    @card.contract.update(
+        player_id: params[:player],
+        team_id: params[:team],
+        position_id: params[:position]
+    )
+
+    @card.update(
+        collection_id: params[:collection],
+        sport_id: Collection.find(params[:collection]).sport_id,
+        player_id: params[:player],
+        condition: params[:condition],
+        special_attribute: params[:special_attribute],
+        estimated_value: params[:estimated_value],
+        team_id: params[:team],
+        position_id: params[:position]
+    )
 
     # if (params[:content] == "") || (params[:content] == nil)
     #     redirect "/cards/#{@card.id}/edit"
