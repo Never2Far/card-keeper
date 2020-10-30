@@ -4,13 +4,15 @@
 <form id="addCardForm1" action="/cards" method="POST">
     <h3>Collection:</h3>
     <% @user.collections.each do |collection| %>
-    <p><input type="radio" name="collection" id="<%= collection.id %>" value="<%= collection.id%>"><%= collection.name %></input></p>
+    <p><input type="radio" name="collection" id="<%= collection.id %>" value="<%= collection.id%>" required><%= collection.name %></input></p>
     <% end %>
 
     <h3>Player:</h3>
-    <% Player.all.each do |player| %>
-    <p><input type="radio" name="player" id="<%= player.id %>" value="<%= player.id%>"><%= player.name %></input></p>
+    <div class="long-list">
+    <% Player.all.sort_by{|player| player.name.downcase }.each do |player| %>
+    <p><input type="radio" name="player" id="<%= player.id %>" value="<%= player.id%>" required><%= player.name %></input></p>
     <% end %>
+    </div>
 
     <h3>Condition:</h3>
     <p><input type="radio" name="condition" id="condition" value="mint">Mint</input></p>
