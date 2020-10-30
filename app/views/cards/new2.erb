@@ -2,11 +2,13 @@
 
 <h2>Part 2 of 2</h2>
 <form id="addCardForm2" action="/cards/new" method="POST">
-
     <h3>Team:</h3>
-    <% @card.sport.teams.each do |team| %>
-    <p><input type="radio" name="team" id="<%= team.id %>" value="<%= team.id%>"><%= team.name %></input></p>
+
+    <div class="long-list">
+    <% @card.sport.teams.sort_by{|team| team.name.downcase }.each do |team| %>
+    <p><input type="radio" name="team" id="<%= team.id %>" value="<%= team.id%>" required><%= team.name %></input></p>
     <% end %>
+    </div>
 
     <h3>Position:</h3>
     <% @card.sport.positions.each do |position| %>
