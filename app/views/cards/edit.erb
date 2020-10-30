@@ -1,0 +1,53 @@
+<h1>Edit Card</h1>
+
+<form id="editCardForm1" action="/cards/<%= @card.id %>" method="POST">
+    <input type="hidden" class="hidden" name="_method" value="patch">
+
+    <h3>Collection:</h3>
+    <% @user.collections.each do |collection| %>
+    <p><input type="radio" name="collection" id="<%= collection.id %>" value="<%= collection.id%>" <%='checked' if (@card.collection.id == collection.id) %>><%= collection.name %></input></p>
+    <% end %>
+
+    <h3>Player:</h3>
+    <div class="long-list">
+    <% Player.all.sort_by{|player| player.name.downcase }.each do |player| %>
+    <p><input type="radio" name="player" id="<%= player.id %>" value="<%= player.id%>" <%='checked' if (@card.player.id == player.id) %>><%= player.name %></input></p>
+    <% end %>
+    </div>
+
+    <h3>Team:</h3>
+    <div class="long-list">
+    <% @card.sport.teams.sort_by{|team| team.name.downcase }.each do |team| %>
+    <p><input type="radio" name="team" id="<%= team.id %>" value="<%= team.id%>" <%='checked' if (@card.team.id == team.id) %>><%= team.name %></input></p>
+    <% end %>
+    </div>
+
+    <h3>Position:</h3>
+    <% @card.sport.positions.each do |position| %>
+    <p><input type="radio" name="position" id="<%= position.id %>" value="<%= position.id%>" <%='checked' if (@card.position.id == position.id) %>><%= position.name %></input></p>
+    <% end %>
+
+    <h3>Condition:</h3>
+    <p><input type="radio" name="condition" id="condition" value="mint" <%='checked' if (@card.condition.downcase == "mint") %>>Mint</input></p>
+    <p><input type="radio" name="condition" id="condition" value="excellant" <%='checked' if (@card.condition.downcase == "excellant") %>>Excellant</input></p>
+    <p><input type="radio" name="condition" id="condition" value="good" <%='checked' if (@card.condition.downcase == "good") %>>Good</input></p>
+    <p><input type="radio" name="condition" id="condition" value="fair" <%='checked' if (@card.condition.downcase == "fair") %>>Fair</input></p>
+    <p><input type="radio" name="condition" id="condition" value="poor" <%='checked' if (@card.condition.downcase == "poor") %>>Poor</input></p>
+
+    <h3>Special Card Attributes:</h3>
+    <p>List any special card attributes separated by commas (rookie, signed, first edition, etc.):</p>
+    <input type="text" name="special_attribute" id="special_attribute" value="<%= @card.special_attribute %>">
+
+    <h3>Estimated Value:</h3>
+    <label for="estimated_value">&#36;</label>
+    <input type="number" step="0.01" min="0.00" name="estimated_value" id="estimated_value" value="<%= @card.estimated_value %>"><br><br>
+
+    
+
+<input type="submit" value="Save Changes">
+
+<form action="/cards/<%= @card.id %>" method="get">
+<input type="submit" value="Cancel">
+</form>
+
+</form>
