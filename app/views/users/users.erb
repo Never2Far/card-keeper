@@ -1,8 +1,8 @@
 <h1>User List</h1>
 
-<ul>
+<ul class="long-list">
 
-<% User.all.each do |user| %>
+<% User.all.sort_by{|user| user.username.downcase }.each do |user| %>
 <li><a href="/users/<%= user.slug %>"><%= user.username %></a></li>
 <% end %>
 

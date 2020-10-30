@@ -5,9 +5,9 @@
 
 <h3><%= sport.name %></h3>
 
-<ul>
+<ul class="long-list">
 
-<% sport.teams.each do |team| %>
+<% sport.teams.sort_by{|team| team.name.downcase }.each do |team| %>
 <li><a href="/teams/<%= team.slug %>"><%= team.name %></a></li>
 <% end %>
 

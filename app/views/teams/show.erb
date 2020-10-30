@@ -2,9 +2,9 @@
 
 <h3>Players (current & historic):</h3>
 
-<ul>
+<ul class="long-list">
 
-    <% @team.players.each do |player| %>
+    <% @team.players.sort_by{|player| player.name.downcase }.each do |player| %>
     <li><a href="/players/<%= player.slug %>"><%= player.name %></a></li>
     <% end %>
     

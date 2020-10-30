@@ -17,8 +17,8 @@
 </ul>
 
 <h3>Cards</h3>
-<ul>
-<% @player.cards.each do |card| %>
+<ul class="long-list">
+<% @player.cards.sort_by{|card| card.team.name.downcase }.each do |card| %>
     <li><a href="/cards/<%= card.id %>"><%= card.team.name %>, <%= card.position.name %>, <%= card.special_attribute %> -- <%= card.condition %></a></li>
 <% end %>
 </ul>

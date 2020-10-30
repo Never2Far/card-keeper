@@ -5,11 +5,11 @@
 
 <h3><%= sport.name %> Card Collections</h3>
 
-<ul>
 
-<% sport.collections.each do |collection| %>
+<ul class="long-list">
+<% sport.collections.sort_by{|collection| collection.name.downcase }.each do |collection| %>
 <li><a href="/collections/<%= collection.id %>"><%= collection.name %></a></li>
 <% end %>
-
 </ul>
+
 <% end %>

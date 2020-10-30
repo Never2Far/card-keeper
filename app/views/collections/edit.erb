@@ -14,11 +14,15 @@
 
     <h3>Cards (**any checked cards will be removed from collection upon form submission**):</h3>
     
-    <% @collection.cards.each do |card| %>
+    <div class="long-list">
+    <% @collection.cards.sort_by{|card| card.player.name.downcase }.each do |card| %>
         <p><input type="checkbox" name="cards[]" id="cards[]" value="<%= card.id %>"><%= card.player.name %>, <%= card.team.name %>, <%= card.position.name %>, <%= card.special_attribute %> -- <%= card.condition %></input></p>
     <% end %>
-    
+</div>
+<input type="submit" value="Save Changes">
 
-<input type="submit" value="Edit Collection">
+<form action="/collections/<%= @collection.id %>" method="get">
+    <input type="submit" value="Cancel">
+</form>
 
 </form>

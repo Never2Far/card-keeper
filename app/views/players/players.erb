@@ -1,8 +1,8 @@
 <h1>Players</h1>
 
-<ul>
+<ul class="long-list">
 
-<% Player.all.each do |player| %>
+<% Player.all.sort_by{|player| player.name.downcase }.each do |player| %>
 <li><a href="/players/<%= player.slug %>"><%= player.name %></a></li>
 <% end %>
 
