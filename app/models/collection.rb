@@ -12,7 +12,9 @@ class Collection < ActiveRecord::Base
     def getValue
         total = 0.00
         self.cards.each do |card|
+            if card.estimated_value != nil
             total += card.estimated_value
+            end
         end
         total
     end
