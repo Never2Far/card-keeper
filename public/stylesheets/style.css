@@ -1,7 +1,20 @@
+html {
+  min-height: 100vh;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  padding: 0;
+  background-color: rgb(190, 190, 190);
+}
+
+
+
 #page-container {
     position: relative;
     min-height: 100vh;
-    background-color: rgb(190, 190, 190);
+    
 }
 
 #sub-page-container {
@@ -9,14 +22,16 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: auto;
-  height: 100vh;
+  min-height: 100vh;
+  padding-top: 0;
   padding-left: 10px;
   padding-right: 10px;
   background-color: white;
 }
   
 #content-wrap {
-    padding-top: 4rem;   
+    padding-top: 4rem;
+    padding-bottom: 2rem;   
 }
   
 #header {
@@ -67,10 +82,11 @@ vertical-align: top;
     background-image: url('https://www.w3schools.com/css/searchicon.png'); /* Add a search icon to input */
     background-position: 10px 12px; /* Position the search icon */
     background-repeat: no-repeat; /* Do not repeat the icon image */
-    width: 100%; /* Full-width */
+    width: 830px; /* Full-width */
     font-size: 16px; /* Increase font-size */
     padding: 12px 20px 12px 40px; /* Add some padding */
     border: 1px solid #ddd; /* Add a grey border */
+    margin-top: 30px;
     margin-bottom: 12px; /* Add some space below the input */
   }
   
@@ -94,4 +110,21 @@ vertical-align: top;
   
   #myUL li a:hover:not(.header) {
     background-color: #eee; /* Add a hover effect to all links, except for headers */
+  }
+
+  .card-list {
+    column-count: 3;
+    column-width: 32%;
+    column-gap: normal;
+  }
+  .player-list {
+    column-count: 3;
+    column-width: 32%;
+    column-gap: normal;
+  }
+
+  .long-list {
+    column-count: 3;
+    column-width: 32%;
+    column-gap: normal;
   }
