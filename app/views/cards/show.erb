@@ -14,3 +14,19 @@
 <h2>Estimated Value: $<%= @card.estimated_value %></h2>
 
 <h2>Special Attributes: <%= @card.special_attribute %></h2>
+
+<% if self.logged_in? && (@card.user == self.current_user) %>
+    <form action="/cards/new" method="get">
+       
+        <input type="submit" value="Add a new card">
+        </form>
+    
+    <form action="/cards/<%= @card.id %>/edit" method="get">
+       
+        <input type="submit" value="Edit Card">
+        </form>
+    <form action="/cards/<%= @card.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Card">
+    </form>
+<% end %>
