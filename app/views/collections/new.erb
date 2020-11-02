@@ -3,17 +3,13 @@
 <form action="/collections" method="post">
 
 <label for="name">Collection Name: </label>
-<input type="text" name="name" id="name"><br><br>
+<input type="text" name="name" id="name" required><br><br>
 
 
 <label for="sport">Collection Sport: </label>
     <% Sport.all.each do |sport| %>
-    <p><input type="radio" name="sport" id="<%= sport.id %>" value="<%= sport.id%>"><%= sport.name %></input></p>
+    <p><input type="radio" name="sport" id="<%= sport.id %>" value="<%= sport.id%>" required><%= sport.name %></input></p>
     <% end %>
-
-
-
-
 
 <input type="submit" value="Create Collection">
 
