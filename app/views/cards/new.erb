@@ -10,11 +10,11 @@
     <h3>Player:</h3>
     <div>
         <p><input type="radio" name="player" id="teamCard" value="team" onclick="ShowHideDiv()" required>Team Card (select team name on next page)</input></p>
-        <p><input type="radio" id="coachCard" name="player" onclick="ShowHideDiv()"/>Coach Card</p>
+        <!-- <p><input type="radio" id="coachCard" name="player" onclick="ShowHideDiv()"/>Coach Card</p>
         <div id="coachText" style="display: none;">
             Coach Name:
             <input type="text" name="coachName" id="coachNameInput">
-        </div>
+        </div> -->
         <p><input type="radio" id="playerCard" name="player" onclick="ShowHideDiv()"/>Player:</p>
         <div id="playerSelect" style="display: none;">
             <div class="long-list">
@@ -49,18 +49,13 @@
 function ShowHideDiv() {
     
     var teamCard = document.getElementById("teamCard");
-        var coachCard = document.getElementById("coachCard");
-        var coachText = document.getElementById("coachText");
-
-        coachText.style.display = coachCard.checked ? "block" : "none";
+        
 
         var playerCard = document.getElementById("playerCard");
         var playerSelect = document.getElementById("playerSelect");
 
         playerSelect.style.display = playerCard.checked ? "block" : "none";
 
-        
-    coachText.style.display = teamCard.checked ? "none" : {};
     playerSelect.style.display = teamCard.checked ? "none" : {};
     }
 </script>

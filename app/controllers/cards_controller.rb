@@ -15,11 +15,16 @@ end
 
 post '/cards' do
 
+    player_id = params[:player]
+    if params[:player] == "team"
+        player_id = Player.find_or_create_by(name: "Team Card").id
+    end
+
     @card = Card.create(
         user_id: session[:user_id],
         collection_id: params[:collection],
         sport_id: Collection.find(params[:collection]).sport_id,
-        player_id: params[:player],
+        player_id: player_id,
         condition: params[:condition],
         special_attribute: params[:special_attribute],
         estimated_value: params[:estimated_value]
@@ -32,6 +37,10 @@ end
 
 post '/cards/new' do
     @card = Card.find(params[:card])
+
+   
+
+
 
     contract = Contract.create(
         player_id: @card.player_id,
