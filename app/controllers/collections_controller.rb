@@ -17,6 +17,15 @@ get '/collections/new' do
 end
 
 post '/collections' do
+    user = User.find(session[:user_id])
+
+    user.collections.each { |collection|
+        if params[:name].downcase == collection.name.downcase
+            flash[:message] = "**You already have a collection with that name, please choose another name.**"
+            redirect '/collections/new'
+        end
+    }
+
     @collection = Collection.create(
         name: params[:name],
         sport_id: params[:sport],
