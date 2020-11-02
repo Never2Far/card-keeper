@@ -43,11 +43,4 @@ class UsersController < ApplicationController
 
         erb :'/users/show'
     end
-
-    # get '/collections/:slug' do
-    #     @collection = Collection.find_by_slug(params[:slug])
-    #     erb :'/collections/show'
-    # end
-
-
 end
