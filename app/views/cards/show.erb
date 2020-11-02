@@ -1,13 +1,16 @@
 <h1>Card</h1>
 
-<h2>Owner: <a href="/collections/<%= @card.collection.id %>"><%= @card.user.username %></a> (Collection: <a href="/collections/<%= @card.collection.id %>" ><%= @card.collection.name %></a>)</h2>
+<div id="card-wrapper">
+    <h2>Player: <a href="/players/<%= @card.player.slug %>"><%= @card.player.name %></a></h2>
 
+    <h2>Team: <a href="/teams/<%= @card.team.slug %>"><%= @card.team.name %></a></h2>
 
-<h2>Player: <a href="/players/<%= @card.player.slug %>"><%= @card.player.name %></a></h2>
+    <h2>Position: <%= @card.position.name %></h2>
+</div>
 
-<h2>Team: <a href="/teams/<%= @card.team.slug %>"><%= @card.team.name %></a></h2>
+<h2>Owner: <a href="/collections/<%= @card.collection.id %>"><%= @card.user.username %></a></h2>
 
-<h2>Position: <%= @card.position.name %></h2>
+<h2>Collection: <a href="/collections/<%= @card.collection.id %>" ><%= @card.collection.name %></a></h2>
 
 <h2>Condition: <%= @card.condition %></h2>
 
