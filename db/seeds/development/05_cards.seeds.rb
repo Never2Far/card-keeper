@@ -1,5 +1,6 @@
+require 'faker'
 Collection.all.each do |collection|
-    50.times do
+    10.times do
         contract = Contract.find(Faker::Number.within(range: 1..Contract.all.count))
 
         Card.create(

@@ -14,8 +14,15 @@ User.create(
     password: "beccajae1"
 )
 
+User.create(
+    name: "Scott",
+    username: "scottSmells",
+    email: "stinky@stinky.com",
+    password: "i-smell"
+)
 
-50.times do
+
+10.times do
     User.create(
         name: Faker::Name.unique.name, 
         username: Faker::Internet.unique.username,
