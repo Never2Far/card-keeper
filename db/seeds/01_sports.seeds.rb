@@ -6,7 +6,7 @@ sports.each do |sport|
     Sport.create(name: sport)
 end
 
-basketball_positions = ["Point Guard", "Shooting Guard", "Small Forward", "Power Forward", "Center", "Coach"]
+basketball_positions = ["Coach", "Point Guard", "Shooting Guard", "Small Forward", "Power Forward", "Center", "Coach"]
 basketball_teams = ["Atlanta Hawks",
     "Boston Celtics",
     "Brooklyn Nets",
@@ -84,7 +84,7 @@ baseball_teams = ["Arizona Diamondbacks",
 "Toronto Blue Jays",
 "Washington Nationals"]
 
-baseball_positions = ["Pitcher", "Catcher", "First Baseman", "Second Baseman", "Third Baseman", "Shortstop", "Left Fielder", "Center Fielder", "Right Fielder", "Coach", "Designated Hitter"]
+baseball_positions = ["Coach", "Pitcher", "Catcher", "First Baseman", "Second Baseman", "Third Baseman", "Shortstop", "Left Fielder", "Center Fielder", "Right Fielder", "Coach", "Designated Hitter"]
 baseball_id = Sport.find_by(name: "Baseball").id
 
 baseball_positions.each do |pos|
@@ -135,7 +135,7 @@ football_teams = ["Arizona Cardinals",
 "Washington Redskins"]
 
 
-football_positions = ["Center", "Offensive Guard", "Offensive Tackle", "Quarterback", "Running Back","Wide Receiver", "Tight End", "Defensive Tackle", "Defensive End", "Middle Linebacker", "Outside Linebacker", "Cornerback", "Safety", "Kicker", "Punter"]
+football_positions = ["Coach", "Center", "Offensive Guard", "Offensive Tackle", "Quarterback", "Running Back","Wide Receiver", "Tight End", "Defensive Tackle", "Defensive End", "Middle Linebacker", "Outside Linebacker", "Cornerback", "Safety", "Kicker", "Punter"]
 football_id = Sport.find_by(name: "Football").id
 
 football_positions.each do |pos|
@@ -152,7 +152,7 @@ football_teams.each do |team|
     )
 end
 
-soccer_positions = ["Goalkeeper", "Center-Back", "Sweeper", "Full-Back", "Wing-Back", "Center Midfield", "Defensive Midfield", "Attacking Midfield", "Wide Midfield", "Center Forward", "Second Striker", "Winger"]
+soccer_positions = ["Coach", "Goalkeeper", "Center-Back", "Sweeper", "Full-Back", "Wing-Back", "Center Midfield", "Defensive Midfield", "Attacking Midfield", "Wide Midfield", "Center Forward", "Second Striker", "Winger"]
 soccer_id = Sport.find_by(name: "Soccer").id
 
 soccer_positions.each do |pos|
@@ -225,7 +225,7 @@ hockey_teams = ["Anaheim Ducks",
 "Washington Capitals",
 "Winnipeg Jets"]
 
-hockey_positions = ["Center", "Goaltender", "Left Defenseman", "Right Defenseman", "Right Winger", "Left Winger"]
+hockey_positions = ["Coach", "Center", "Goaltender", "Left Defenseman", "Right Defenseman", "Right Winger", "Left Winger"]
 hockey_id = Sport.find_by(name: "Hockey").id
 
 hockey_positions.each do |pos|
