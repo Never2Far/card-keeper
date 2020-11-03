@@ -1,33 +1,149 @@
-<script>
-    function myFunction() {
-      // Declare variables
-      var input, filter, ul, li, a, i, txtValue;
-      input = document.getElementById('myInput');
-      filter = input.value.toUpperCase();
-      ul = document.getElementById("myUL");
-      li = ul.getElementsByTagName('li');
-    
-      // Loop through all list items, and hide those who don't match the search query
-      for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
-        txtValue = a.textContent || a.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          li[i].style.display = "";
-        } else {
-          li[i].style.display = "none";
-        }
-      }
-    }
-    </script>
+<h1>Search</h1>
+
+<h2>What would you like to search for/by?</h2>
+
+<input type="radio" name="searchType" id="playerSearch" onclick="searchType()">Player</input>
+<input type="radio" name="searchType" id="teamSearch" onclick="searchType()">Team</input>
+<input type="radio" name="searchType" id="userSearch" onclick="searchType()">User</input>
+<input type="radio" name="searchType" id="collectionSearch" onclick="searchType()">Collection</input>
 
 
+<div id="searchBox" style="display: none">
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Start typing to filter results..">
+</div>
 
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for players..">
+<div id="playerList" style="display: none">
+  <ul class="long-list">
+      <% Player.all.sort_by{|player| player.name.downcase }.each do |player| %>
+      <li><a href="/players/<%= player.slug %>"><%= player.name %></a></li>
+      <% end %>
+  </ul>
+</div>
 
-<ul id="myUL" class="long-list">
+<div id="teamList" style="display: none">
+<ul class="long-list">
+  <% Team.all.sort_by{|team| team.name.downcase }.each do |team| %>
+  <li><a href="/teams/<%= team.slug %>"><%= team.name %></a></li>
+  <% end %>
+</ul>
+</div>
 
-    <% Player.all.sort_by{|player| player.name.downcase }.each do |player| %>
-    <li><a href="/players/<%= player.slug %>"><%= player.name %></a></li>
+<div id="userList" style="display: none">
+  <ul class="long-list">
+
+    <% User.all.sort_by{|user| user.username.downcase }.each do |user| %>
+    <li><a href="/users/<%= user.slug %>"><%= user.username %></a></li>
     <% end %>
     
     </ul>
+</div>
+
+<div id="collectionList" style="display: none">
+  <ul class="long-list">
+    <% Collection.all.sort_by{|collection| collection.name.downcase }.each do |collection| %>
+    <li><a href="/collections/<%= collection.id %>"><%= collection.name %></a></li>
+    <% end %>
+    </ul>
+</div>
+
+
+
+
+    <script>
+
+      function searchType() {
+        var playerSearch = document.getElementById("playerSearch");
+        var teamSearch = document.getElementById("teamSearch");
+        var userSearch = document.getElementById("userSearch");
+        var collectionSearch = document.getElementById("collectionSearch");
+
+        var searchTypes = [playerSearch, teamSearch, userSearch, collectionSearch]
+        var listId;
+        var searchBox = document.getElementById("searchBox");
+        searchBox.style.display = searchTypes.some(element => element.checked == true) ? "block" : "none";
+
+
+        switch (searchTypes.find(element => element.checked == true)) {
+          case playerSearch:
+          // searchBox.style.display = "block";
+          
+            listId = "playerList";
+        document.getElementById("teamList").style.display = "none";
+        document.getElementById("userList").style.display = "none";
+        document.getElementById("collectionList").style.display = "none";
+            break;
+        case teamSearch:
+        // searchBox.style.display = "block";
+          listId = "teamList";
+          document.getElementById("playerList").style.display = "none";
+        
+        document.getElementById("userList").style.display = "none";
+        document.getElementById("collectionList").style.display = "none";
+          break;
+          case userSearch:
+          // searchBox.style.display = "block";
+            listId = "userList";
+            document.getElementById("playerList").style.display = "none";
+        document.getElementById("teamList").style.display = "none";
+        
+        document.getElementById("collectionList").style.display = "none";
+            break;
+            case collectionSearch:
+            // searchBox.style.display = "block";
+              listId = "collectionList";
+              document.getElementById("playerList").style.display = "none";
+        document.getElementById("teamList").style.display = "none";
+        document.getElementById("userList").style.display = "none";
+        
+              break;
+                  // default: 
+                  // searchBox.style.display = "block";
+                  // listId = "playerList";
+                  // break;
+        }
+        searchTypes.forEach(
+          element => 
+          document
+        )
+      
+        document.getElementById(listId).style.display = "block";
+        return listId
+      }
+
+
+      
+      function myFunction() {
+
+
+
+
+
+        
+        // Declare variables
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById('myInput');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById(searchType());
+        li = ul.getElementsByTagName('li');
+      
+        // Loop through all list items, and hide those who don't match the search query
+        for (i = 0; i < li.length; i++) {
+          a = li[i].getElementsByTagName("a")[0];
+          txtValue = a.textContent || a.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+          } else {
+            li[i].style.display = "none";
+          }
+        }
+      }
+
+
+    //   function ShowHideDiv() {
+        
+        
+    //     searchBox.style.display = searchTypes.some(element => element.checked == true) ? "block" : "none";
+        
+        
+    // }
+      </script>
