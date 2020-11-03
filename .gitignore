@@ -4,3 +4,5 @@ db/test.sqlite
 to-do
 db/development.sqlite
 db/development.sqlite
+db/development.sqlite
+Gemfile.lock
