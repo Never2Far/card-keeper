@@ -26,7 +26,7 @@ post '/cards' do
         user_id: session[:user_id],
         collection_id: params[:collection],
         sport_id: Collection.find(params[:collection]).sport_id,
-        player_id: player_id,
+        player_id: params[:player],
         condition: params[:condition],
         special_attribute: params[:special_attribute],
         estimated_value: params[:estimated_value]

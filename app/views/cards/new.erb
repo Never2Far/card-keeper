@@ -44,13 +44,18 @@
 function ShowHideDiv() {
     
     var teamCard = document.getElementById("teamCard");
-        
+        var coachCard = document.getElementById("coachCard");
+        var coachText = document.getElementById("coachText");
+
+        coachText.style.display = coachCard.checked ? "block" : "none";
 
         var playerCard = document.getElementById("playerCard");
         var playerSelect = document.getElementById("playerSelect");
 
         playerSelect.style.display = playerCard.checked ? "block" : "none";
 
+        
+    coachText.style.display = teamCard.checked ? "none" : {};
     playerSelect.style.display = teamCard.checked ? "none" : {};
     }
 </script>
