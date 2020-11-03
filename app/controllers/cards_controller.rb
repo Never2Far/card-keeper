@@ -1,13 +1,10 @@
 class CardsController < ApplicationController
 
 
-get '/cards' do
-    erb :'cards/cards'
-end
+
 
 get '/cards/new' do
-    # @collection = Collection.find(session[:current_collection_id])
-    # @sport = @collection.sport
+
     @user = User.find(session[:user_id])
 
     erb :'cards/new'
@@ -15,7 +12,6 @@ end
 
 post '/cards' do
 
-    # sport_id = Collection.find(params[:collection]).sport_id,
 
     player_id = params[:player]
     if params[:player] == "team"
@@ -32,7 +28,6 @@ post '/cards' do
         estimated_value: params[:estimated_value]
     )
 
-    # @card.collection.estimated_value += @card.estimated_value
     
     erb :'cards/new2'
 end
@@ -113,11 +108,7 @@ patch '/cards/:id' do
         position_id: params[:position]
     )
 
-    # if (params[:content] == "") || (params[:content] == nil)
-    #     redirect "/cards/#{@card.id}/edit"
-    # end
     
-    # @card.update(content: params[:content])
     redirect "/cards/#{@card.id}"
 end
 
@@ -125,7 +116,6 @@ delete '/cards/:id' do
     @card = Card.find(params[:id])
     @collection = @card.collection
     if self.logged_in? && (self.current_user.id == @card.user_id)
-        # @collection.estimated_value -= @card.estimated_value
         @card.destroy
     end
         redirect "/collections/#{@collection.id}"
