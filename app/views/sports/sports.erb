@@ -1,0 +1,9 @@
+<h1>Sports</h1>
+
+<ul >
+
+    <% Sport.all.sort_by{|sport| sport.name.downcase }.each do |sport| %>
+    <li><a href="/sports/<%= sport.slug %>"><%= sport.name %></a></li><br>
+    <% end %>
+    
+    </ul>

@@ -10,6 +10,7 @@ use Rack::MethodOverride
 
 
 use UsersController
+use SportsController
 use TeamsController
 use PlayersController
 use CollectionsController

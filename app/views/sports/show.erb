@@ -1,0 +1,19 @@
+<h1><%= @sport.name %></h1>
+
+<h3>Teams</h3>
+
+<ul class="long-list">
+
+    <% @sport.teams.sort_by{|team| team.name.downcase }.each do |team| %>
+    <li><a href="/teams/<%= team.slug %>"><%= team.name %></a></li>
+    <% end %>
+    
+</ul>
+
+<h3>Collections</h3>
+
+<ul class="long-list">
+    <% @sport.collections.sort_by{|collection| collection.name.downcase }.each do |collection| %>
+    <li><a href="/collections/<%= collection.id %>"><%= collection.name %></a></li>
+    <% end %>
+</ul>
