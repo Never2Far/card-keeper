@@ -6,3 +6,4 @@ db/development.sqlite
 db/development.sqlite
 db/development.sqlite
 Gemfile.lock
+.erdconfig
