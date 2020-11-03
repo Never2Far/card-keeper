@@ -15,6 +15,8 @@ end
 
 post '/cards' do
 
+    # sport_id = Collection.find(params[:collection]).sport_id,
+
     player_id = params[:player]
     if params[:player] == "team"
         player_id = Player.find_or_create_by(name: "Team Card").id
@@ -38,20 +40,25 @@ end
 post '/cards/new' do
     @card = Card.find(params[:card])
 
-   
+   if @card.player.name == "Team Card"
+    position_id = Position.find_by(sport_id: @card.sport_id)
+   else
+   position_id = params[:position]
+   end
+    
 
 
 
     contract = Contract.create(
         player_id: @card.player_id,
         team_id: params[:team],
-        position_id: params[:position]
+        position_id: position_id
     )
 
     @card.update(
         contract_id: contract.id,
         team_id: params[:team],
-        position_id: params[:position]
+        position_id: position_id
     )
 
    @card.save
@@ -82,6 +89,12 @@ end
 
 patch '/cards/:id' do
     @card = Card.find(params[:id])
+
+    if @card.player.name == "Team Card"
+        position_id = Position.find_or_create_by(name: "Team", sport_id: @card.sport_id)
+       else
+       position_id = params[:position]
+       end
 
     @card.contract.update(
         player_id: params[:player],
