@@ -8,3 +8,4 @@ db/development.sqlite
 Gemfile.lock
 .erdconfig
 erd.png
+db/development.sqlite
