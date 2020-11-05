@@ -14,15 +14,15 @@ post '/cards' do
 
 
     player_id = params[:player]
-    if params[:player] == "team"
-        player_id = Player.find_or_create_by(name: "Team Card").id
+    if params[:player] == "newPlayer"
+        player_id = Player.create(name: params[:newPlayer]).id
     end
 
     @card = Card.create(
         user_id: session[:user_id],
         collection_id: params[:collection],
         sport_id: Collection.find(params[:collection]).sport_id,
-        player_id: params[:player],
+        player_id: player_id,
         condition: params[:condition],
         special_attribute: params[:special_attribute],
         estimated_value: params[:estimated_value]
@@ -35,11 +35,11 @@ end
 post '/cards/new' do
     @card = Card.find(params[:card])
 
-   if @card.player.name == "Team Card"
-    position_id = Position.find_by(sport_id: @card.sport_id)
-   else
-   position_id = params[:position]
-   end
+#    if @card.player.name == "Team Card"
+#     position_id = Position.find_by(sport_id: @card.sport_id)
+#    else
+#    position_id = params[:position]
+#    end
     
 
 
@@ -47,13 +47,13 @@ post '/cards/new' do
     contract = Contract.create(
         player_id: @card.player_id,
         team_id: params[:team],
-        position_id: position_id
+        position_id: params[:position]
     )
 
     @card.update(
         contract_id: contract.id,
         team_id: params[:team],
-        position_id: position_id
+        position_id: params[:position]
     )
 
    @card.save
@@ -85,14 +85,13 @@ end
 patch '/cards/:id' do
     @card = Card.find(params[:id])
 
-    if @card.player.name == "Team Card"
-        position_id = Position.find_or_create_by(name: "Team", sport_id: @card.sport_id)
-       else
-       position_id = params[:position]
-       end
+    player_id = params[:player]
+    if params[:player] == "newPlayer"
+        player_id = Player.create(name: params[:newPlayer]).id
+    end
 
     @card.contract.update(
-        player_id: params[:player],
+        player_id: player_id,
         team_id: params[:team],
         position_id: params[:position]
     )
@@ -100,7 +99,7 @@ patch '/cards/:id' do
     @card.update(
         collection_id: params[:collection],
         sport_id: Collection.find(params[:collection]).sport_id,
-        player_id: params[:player],
+        player_id: player_id,
         condition: params[:condition],
         special_attribute: params[:special_attribute],
         estimated_value: params[:estimated_value],
@@ -114,9 +113,13 @@ end
 
 delete '/cards/:id' do
     @card = Card.find(params[:id])
+    @player = @card.player
     @collection = @card.collection
     if self.logged_in? && (self.current_user.id == @card.user_id)
         @card.destroy
+        if @player.cards.count == 0 || @player.cards.count == nil
+            @player.destroy
+        end
     end
         redirect "/collections/#{@collection.id}"
 end

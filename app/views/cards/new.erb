@@ -8,11 +8,19 @@
     <% end %>
 
     <h3>Player:</h3>
+    <div id="playerSelect">
+
     <div class="long-list">
     <% Player.all.sort_by{|player| player.name.downcase }.each do |player| %>
-    <p><input type="radio" name="player" id="<%= player.id %>" value="<%= player.id%>" required><%= player.name %></input></p>
+    <p><input type="radio" name="player" id="<%= player.id %>" value="<%= player.id%>" required onclick="ShowHideDiv()"><%= player.name %></input></p>
     <% end %>
     </div>
+    </div>
+    <h4><input type="radio" id="newPlayer" name="player" value="newPlayer" onclick="ShowHideDiv()"/>New Player</h4>     
+     <div id="playerText" style="display: none;">
+            Player Name:
+            <input type="text" name="newPlayer" id="playerNameInput">
+        </div>
 
     <h3>Condition:</h3>
     <p><input type="radio" name="condition" id="condition" value="mint">Mint</input></p>
@@ -33,3 +41,21 @@
 <input type="submit" value="Next">
 
 </form>
+
+<script>
+    function ShowHideDiv() {
+    
+        
+            var newPlayer = document.getElementById("newPlayer");
+            var playerText = document.getElementById("playerText");
+    
+            playerText.style.display = newPlayer.checked ? "block" : "none";
+    
+            // var playerSelect = document.getElementById("playerSelect");
+    
+            // playerSelect.style.display = playerCard.checked ? "block" : "none";
+    
+    
+        playerText.style.display = playerSelect.checked ? "none" : {};
+        }
+    </script>
