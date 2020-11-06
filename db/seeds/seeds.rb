@@ -1,3 +1,5 @@
+require 'faker'
+
 sports = ["Basketball", "Baseball", "Football", "Soccer", "Hockey"]
 
 
