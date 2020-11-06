@@ -14,7 +14,7 @@ gem "tux"
 gem 'sinatra-flash'
 gem 'ruby-graphviz'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
-gem 'seedbank'
+# gem 'seedbank'
 
 group :development do
   gem "rails-erd"

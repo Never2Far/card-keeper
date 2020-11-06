@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: 6ab57e58c78f7c71745b0948b227ce40ad5a3329
+  revision: a65677484e246165735806da09a8f6e7c62f9c61
   branch: master
   specs:
     faker (2.14.0)
@@ -75,24 +75,22 @@ GEM
       rack (>= 1.0)
       rack-test (>= 0.5)
       ripl (>= 0.3.5)
-    rspec (3.9.0)
-      rspec-core (~> 3.9.0)
-      rspec-expectations (~> 3.9.0)
-      rspec-mocks (~> 3.9.0)
-    rspec-core (3.9.3)
-      rspec-support (~> 3.9.3)
-    rspec-expectations (3.9.2)
+    rspec (3.10.0)
+      rspec-core (~> 3.10.0)
+      rspec-expectations (~> 3.10.0)
+      rspec-mocks (~> 3.10.0)
+    rspec-core (3.10.0)
+      rspec-support (~> 3.10.0)
+    rspec-expectations (3.10.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.9.0)
-    rspec-mocks (3.9.1)
+      rspec-support (~> 3.10.0)
+    rspec-mocks (3.10.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.9.0)
-    rspec-support (3.9.3)
+      rspec-support (~> 3.10.0)
+    rspec-support (3.10.0)
     ruby-graphviz (1.2.5)
       rexml
     ruby2_keywords (0.0.2)
-    seedbank (0.5.0)
-      rake (>= 10.0)
     shotgun (0.9.2)
       rack (>= 1.0)
     sinatra (2.1.0)
@@ -100,7 +98,7 @@ GEM
       rack (~> 2.2)
       rack-protection (= 2.1.0)
       tilt (~> 2.0)
-    sinatra-activerecord (2.0.19)
+    sinatra-activerecord (2.0.21)
       activerecord (>= 4.1)
       sinatra (>= 1.0)
     sinatra-flash (0.3.0)
@@ -121,7 +119,7 @@ GEM
       thread_safe (~> 0.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.4.0)
+    zeitwerk (2.4.1)
 
 PLATFORMS
   ruby
@@ -139,7 +137,6 @@ DEPENDENCIES
   require_all
   rspec
   ruby-graphviz
-  seedbank
   shotgun
   sinatra
   sinatra-activerecord
