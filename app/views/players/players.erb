@@ -2,7 +2,7 @@
 
 <ul class="long-list">
 
-<% Player.all.sort_by{|player| player.name.downcase }.each do |player| %>
+<% Player.all.sort_by{|player| player.name.downcase }.uniq.each do |player| %>
 <li><a href="/players/<%= player.slug %>"><%= player.name %></a></li>
 <% end %>
 

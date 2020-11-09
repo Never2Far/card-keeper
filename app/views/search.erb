@@ -14,7 +14,7 @@
 
 <div id="playerList" style="display: none">
   <ul class="long-list">
-      <% Player.all.sort_by{|player| player.name.downcase }.each do |player| %>
+      <% Player.all.sort_by{|player| player.name.downcase }.uniq.each do |player| %>
       <li><a href="/players/<%= player.slug %>"><%= player.name %></a></li>
       <% end %>
   </ul>
@@ -22,7 +22,7 @@
 
 <div id="teamList" style="display: none">
 <ul class="long-list">
-  <% Team.all.sort_by{|team| team.name.downcase }.each do |team| %>
+  <% Team.all.sort_by{|team| team.name.downcase }.uniq.each do |team| %>
   <li><a href="/teams/<%= team.slug %>"><%= team.name %></a></li>
   <% end %>
 </ul>

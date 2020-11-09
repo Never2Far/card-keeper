@@ -5,7 +5,7 @@
     <h3>Team:</h3>
 
     <div class="long-list">
-    <% @card.sport.teams.sort_by{|team| team.name.downcase }.each do |team| %>
+    <% @card.sport.teams.sort_by{|team| team.name.downcase }.uniq.each do |team| %>
     <p><input type="radio" name="team" id="<%= team.id %>" value="<%= team.id%>" required><%= team.name %></input></p>
     <% end %>
     </div>

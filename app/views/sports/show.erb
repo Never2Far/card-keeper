@@ -4,7 +4,7 @@
 
 <ul class="long-list">
 
-    <% @sport.teams.sort_by{|team| team.name.downcase }.each do |team| %>
+    <% @sport.teams.sort_by{|team| team.name.downcase }.uniq.each do |team| %>
     <li><a href="/teams/<%= team.slug %>"><%= team.name %></a></li>
     <% end %>
     
