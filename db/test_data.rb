@@ -1,6 +1,3 @@
-require 'faker'
-
-
 # Add Users
 
 User.create(
