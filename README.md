@@ -12,7 +12,7 @@ bundle install
 ```
 to install required gems/dependencies.
 
-*To seed the databse with fake test data, copy the contents of "db/test_data.rb", and paste it at the end of the seeds file (db/seeds.rb).  Then proceed with the remaining steps:*
+*To seed the databse with fake test data, and a test user account (username: test, password: test) copy the contents of "db/test_data.rb", and paste it at the end of the seeds file (db/seeds.rb).  Then proceed with the remaining steps:*
 
 Next run
 ```bash
