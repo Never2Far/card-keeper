@@ -12,6 +12,8 @@ bundle install
 ```
 to install required gems/dependencies.
 
+*To seed the databse with fake test data, copy the contents of "db/test_data.rb", and paste it at the end of the seeds file (db/seeds.rb).  Then proceed with the remaining steps:*
+
 Next run
 ```bash
 rake db:setup
